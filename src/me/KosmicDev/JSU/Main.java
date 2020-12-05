@@ -2,10 +2,15 @@ package me.KosmicDev.JSU;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
+/**
+ * @author KosmicShovel(KosmicDev)
+ */
 public class Main {
 
+    /**
+     * Testing method for trying out the serializers
+     */
     public static void main(String... args) {
         TempClass o = new TempClass();
         o.anInt = 87;
@@ -16,22 +21,7 @@ public class Main {
         o.arrayList.add('c');
 
         //Warmup
-        Random r = new Random();
-        for (int i = 0; i < 5000; i++) {
-            TempClass tmp = new TempClass();
-            tmp.anInt = r.nextInt();
-            tmp.aBoolean = r.nextBoolean();
-            tmp.arrayList.add(r.nextGaussian() + "");
-            tmp.arrayList.add(r.nextGaussian() + "");
-            tmp.arrayList.add(r.nextInt());
-            tmp.arrayList.add(r.nextInt()%127);
-            long timeThen = System.nanoTime();
-            String gcThis = JsonSerializer.Serialize(tmp);
-            long timeNow = System.nanoTime();
-            gcThis = null;
-            System.gc();
-        }
-        System.gc();
+        JsonSerializer.Init();
 
         List<Float> timeTaken = new ArrayList<>();
 

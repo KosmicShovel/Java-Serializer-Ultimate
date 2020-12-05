@@ -6,8 +6,46 @@ import java.io.Console;
 import java.lang.reflect.Field;
 import java.util.*;
 
+/**
+ * @author KosmicShovel(KosmicDev)
+ */
 public class JsonSerializer {
 
+     /**
+     * For good performance, it is essential to call this on initialization
+     * for your program or any other time it wont interfere with the end user
+     */
+    public static void Init() { Init(2000); }
+
+     /**
+     * For good performance, it is essential to call this on initialization
+     * for your program or any other time it wont interfere with the end user
+     * @param iterations    The amount of iterations to warm up the serializer with.
+     */
+    public static void Init(int iterations) {
+        Random r = new Random();
+        for (int i = 0; i < iterations; i++) {
+            TempClass tmp = new TempClass();
+            tmp.anInt = r.nextInt();
+            tmp.aBoolean = r.nextBoolean();
+            tmp.arrayList.add(r.nextGaussian() + "");
+            tmp.arrayList.add(r.nextGaussian());
+            tmp.arrayList.add(r.nextFloat());
+            tmp.arrayList.add((byte)r.nextInt()%127);
+            long timeThen = System.nanoTime();
+            String gcThis = JsonSerializer.Serialize(tmp);
+            long timeNow = System.nanoTime();
+            gcThis = null;
+            System.gc();
+        }
+        System.gc();
+    }
+
+    /**
+     *  Serializes any given object into JSON.
+     * @param value The object given to serialize.
+     * @return
+     */
     public static String Serialize(Object value) {
         String result = "{\n";
 
@@ -24,6 +62,13 @@ public class JsonSerializer {
         return result;
     }
 
+    /**
+     *  Deserializes any given JSON string to the selected type with args provided if necessary.
+     * @param type  Class type to deserialize to.
+     * @param json  Serialized JSON.
+     * @param args  Any args needed for instantiation. (Nullable)
+     * @return
+     */
     public static Object Deserialize(Class type, String json, @Nullable Object... args) {
         try {
             Object clazz = type.newInstance();
@@ -48,6 +93,11 @@ public class JsonSerializer {
         return null;
     }
 
+    /**
+     * Removes any excess characters in the JSON
+     * @param json JSON string to parse
+     * @return
+     */
     private static String trimExcess(String json) {
         return json.replace("{\n", "").replace("}", "").replace("\t", "");
     }
