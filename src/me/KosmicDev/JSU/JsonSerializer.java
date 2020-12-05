@@ -43,6 +43,18 @@ public class JsonSerializer {
 
     /**
      *  Serializes any given object into JSON.
+     *  All serializable object members are:
+     *  - Object
+     *  - String
+     *  - Character
+     *  - Byte
+     *  - Short
+     *  - Integer
+     *  - Long
+     *  - Float
+     *  - Double
+     *  - Boolean
+     *  - ArrayList
      * @param value The object given to serialize.
      * @return
      */
