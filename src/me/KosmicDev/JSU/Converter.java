@@ -9,7 +9,7 @@ public class Converter {
     /**
      * Note, I did NOT make the majority of this nor do I wish to claim to.
      * The original author is cambecc on StackOverflow
-     * @{https://stackoverflow.com/questions/13868986/dynamically-create-an-object-in-java-from-a-class-name-and-set-class-fields-by-u}
+     * https://stackoverflow.com/questions/13868986/dynamically-create-an-object-in-java-from-a-class-name-and-set-class-fields-by-u
      * @param target    Class to cast the string to.
      * @param s String of an object to convert.
      * @return  Converted object from s to typeof target.

@@ -1,6 +1,11 @@
 <component name="ArtifactManager">
   <artifact type="jar" build-on-make="true" name="JavaSerializer">
-    <output-path>$PROJECT_DIR$/out/JavaSerializer</output-path>
-    <root id="archive" name="JavaSerializer.jar" />
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="JavaSerializer.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="JavaSerializerUltimate" />
+    </root>
   </artifact>
 </component>

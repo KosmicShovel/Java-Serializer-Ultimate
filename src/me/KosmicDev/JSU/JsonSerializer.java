@@ -56,7 +56,7 @@ public class JsonSerializer {
      *  - Boolean
      *  - ArrayList
      * @param value The object given to serialize.
-     * @return
+     * @return  Serialized JSON as a String.
      */
     public static String Serialize(Object value) {
         String result = "{\n";
@@ -79,7 +79,7 @@ public class JsonSerializer {
      * @param type  Class type to deserialize to.
      * @param json  Serialized JSON.
      * @param args  Any args needed for instantiation. (Nullable)
-     * @return
+     * @return  The object deserialized from the JSON.
      */
     public static Object Deserialize(Class type, String json, @Nullable Object... args) {
         try {
