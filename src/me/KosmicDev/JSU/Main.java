@@ -24,7 +24,7 @@ public class Main {
             System.gc();
             float timeTook = (timeNow - timeThen) / 1000000f;
             timeTaken.add(timeTook);
-            System.out.println("Time taken was " + (timeTook > 0.02f ? "\u001b[31m" : (timeTook < 0.01f ? "\u001b[32m" : "\u001b[33m")) + timeTook + "ms\u001b[00m.");
+            System.out.println("Time taken was " + (timeTook > 0.03f ? "\u001b[31m" : (timeTook < 0.015f ? "\u001b[32m" : "\u001b[33m")) + timeTook + "ms\u001b[00m.");
             System.out.println("---------------------------------------------------------");
         }
 
